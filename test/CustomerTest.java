@@ -53,8 +53,8 @@ class CustomerTest {
         result += "You earned " + "1" + " frequent renter points";
         assertEquals(result, statement);
     }
-        @org.junit.jupiter.api.Test
-        void testSingleRentalRegularThreeDays() {
+    @org.junit.jupiter.api.Test
+    void testSingleRentalRegularThreeDays() {
         customer.addRentals(rentalRegularThreeDays);
         String statement = customer.statement();
         String result = "Rental Record for " + "hoge" + "\n";
@@ -107,7 +107,6 @@ class CustomerTest {
         result += "You earned " + "2" + " frequent renter points";
         assertEquals(result, statement);
     }
-
     @org.junit.jupiter.api.Test
     void testMultiRentalNEWRELEASE() {
         customer.addRentals(rentalNEWRELEASE);
@@ -131,6 +130,20 @@ class CustomerTest {
         result += "\t" + "doraemon2" + "\t" + "3.0" + "\n" ;
         result += "Amount owed is " + "4.5" + "\n";
         result += "You earned " + "2" + " frequent renter points";
+        assertEquals(result,statement);
+    }
+    @org.junit.jupiter.api.Test
+    void testMultiRental() {
+        customer.addRentals(rentalNEWRELEASE);
+        customer.addRentals(rentalCHILDRENFourDays);
+        customer.addRentals(rentalRegularTwoDays);
+        String statement = customer.statement();
+        String result = "Rental Record for " + "hoge" + "\n";
+        result += "\t" + "doraemon1" + "\t" + "6.0" + "\n" ;
+        result += "\t" + "doraemon2" + "\t" + "3.0" + "\n" ;
+        result += "\t" + "doraemon0" + "\t" + "2.0" + "\n" ;
+        result += "Amount owed is " + "11.0" + "\n";
+        result += "You earned " + "4" + " frequent renter points";
         assertEquals(result,statement);
     }
 }
